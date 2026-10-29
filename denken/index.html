@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>10 Denk-Prompts · Hey Spark</title>
+<meta name="description" content="10 Denk-Prompts für ChatGPT und Claude: damit deine KI mitdenkt, statt zu schleimen. Zum Kopieren.">
+<meta property="og:title" content="10 Denk-Prompts · Hey Spark">
+<link rel="icon" href="../img/profilbild.png">
+<style>
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/poppins-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:500;font-display:swap;src:url(../fonts/poppins-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(../fonts/poppins-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:800;font-display:swap;src:url(../fonts/poppins-latin-800-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:900;font-display:swap;src:url(../fonts/poppins-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:900;font-display:swap;src:url(../fonts/poppins-latin-900-italic.woff2) format('woff2')}
+@font-face{font-family:'Press Start 2P';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/press-start-2p-latin-400-normal.woff2) format('woff2')}
+.zurueck { align-self: flex-start; font-family: var(--f-pixel); font-size: 10px; letter-spacing: .06em; color: var(--creme); text-decoration: none; padding: 6px 0; }
+.zurueck:hover { color: var(--gold); }
+.recht { display: flex; justify-content: center; gap: 18px; }
+.recht a { color: var(--creme); font-size: 13px; }
+.hinweis { margin: 0; font-size: 12px; color: var(--leise); }
+body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+<style>
+/* Layout: eine schmale Spalte wie ein Handy-Screen, oben Glut-Hero, darunter 10 Prompt-Karten mit Kopierknopf. Design laut Kanal-Bibel, bewusst nur dunkel. */
+:root {
+  --glut-1:#ff9a3c; --glut-2:#ec6418; --glut-3:#9a2a09; --glut-4:#3d0b03;
+  --grund:#140907; --karte:#211009; --linie:#4a2416;
+  --orange:#ff9a2e; --gold:#ffd447; --creme:#ffe6c2; --tinte:#2a120c; --text:#f6e7d5; --leise:#c9a98f;
+  --f-display:'Poppins', system-ui, sans-serif; --f-text:'Poppins', system-ui, sans-serif; --f-pixel:'Press Start 2P', ui-monospace, monospace;
+  color-scheme: dark;
+}
+html { background: var(--grund); }
+body { background: var(--grund); color: var(--text); font-family: var(--f-text); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 640px; margin: 0 auto; padding-block: 24px 56px; display: flex; flex-direction: column; gap: 20px; }
+.hero { position: relative; overflow: hidden; border-radius: 24px; padding: 28px 22px 0;
+  background: radial-gradient(120% 80% at 50% 30%, var(--glut-1) 0%, var(--glut-2) 38%, var(--glut-3) 72%, var(--glut-4) 100%); }
+.hero .pix { font-family: var(--f-pixel); font-size: 11px; letter-spacing: .08em; color: var(--creme); }
+.hero h1 { font-family: var(--f-display); font-weight: 900; font-style: italic; font-size: clamp(40px, 11vw, 64px); line-height: .98; letter-spacing: -.03em;
+  margin: 14px 0 10px; color: #fff; transform: rotate(-4deg); transform-origin: left; text-shadow: 0 .07em 0 rgba(42,18,12,.85); text-wrap: balance; }
+.hero h1 em { color: var(--gold); font-style: inherit; }
+.hero p { margin: 18px 0 0; max-width: 32ch; color: var(--creme); font-weight: 700; font-size: 17px; line-height: 1.4; text-shadow: 0 2px 0 rgba(42,18,12,.6); }
+.figuren { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; }
+.figuren img { image-rendering: pixelated; height: 150px; width: auto; }
+.figuren img.spark { height: 120px; margin-bottom: 18px; filter: drop-shadow(0 0 24px rgba(255,212,71,.55)); }
+.tipp { border: 2px dashed var(--linie); border-radius: 18px; padding: 18px 20px; }
+.tipp h3, .wann span { font-family: var(--f-pixel); font-size: 10px; letter-spacing: .1em; color: var(--orange); text-transform: uppercase; }
+.tipp h3 { margin: 0 0 10px; }
+.tipp ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.tipp mark, .prompt mark { background: none; color: var(--gold); font-weight: 800; }
+.card { background: var(--karte); border: 2px solid var(--linie); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card:first-of-type { border-color: var(--gold); }
+.card header { display: flex; gap: 14px; align-items: center; }
+.nr { font-family: var(--f-pixel); font-size: 22px; color: var(--gold); min-width: 2.2em; text-align: center; }
+.kopf { min-width: 0; }
+.card h2 { margin: 0; font-family: var(--f-display); font-weight: 900; font-size: clamp(18px, 5.2vw, 22px); line-height: 1.1; color: #fff; overflow-wrap: break-word; hyphens: manual; }
+.was { margin: 2px 0 0; color: var(--leise); font-weight: 600; font-size: 14px; }
+.wann { margin: 0; font-size: 15px; color: var(--text); }
+.wann span { margin-right: 6px; }
+.prompt { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--f-text); font-weight: 500; font-size: 15.5px; line-height: 1.55;
+  background: var(--grund); border-radius: 14px; padding: 16px; color: var(--creme); }
+.copy { align-self: flex-start; font-family: var(--f-pixel); font-size: 11px; letter-spacing: .06em; color: var(--tinte); background: var(--orange);
+  border: 0; border-radius: 12px; padding: 14px 16px; cursor: pointer; box-shadow: 0 4px 0 var(--glut-3); }
+.copy:hover { background: var(--gold); }
+.copy:focus-visible { outline: 3px solid var(--creme); outline-offset: 3px; }
+.copy.ok { background: var(--gold); }
+footer { text-align: center; display: grid; gap: 8px; color: var(--leise); font-size: 14px; }
+footer .pix { font-family: var(--f-pixel); font-size: 11px; color: var(--gold); letter-spacing: .08em; }
+footer a { color: var(--creme); }
+@media (prefers-reduced-motion: no-preference) { .copy { transition: background .15s, transform .1s; } .copy:active { transform: translateY(2px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="zurueck" href="../">◀ Hey Spark · alle Links</a>
+  <section class="hero">
+    <div class="pix">HEY SPARK · DENK-PROMPTS</div>
+    <h1>Deine KI <em>schleimt.</em></h1>
+    <p>Hier sind die 10 Rollen, mit denen ChatGPT oder Claude mitdenkt, statt zu nicken.</p>
+    <div class="figuren"><img src="../img/melanthrial-daumen-hoch.png" alt="Melanthrial mit Daumen hoch"><img class="spark" src="../img/ki-freut-sich.png" alt="Spark, der freundliche Pixel-Roboter"></div>
+  </section>
+  <section class="tipp">
+    <h3>So holst du am meisten raus</h3>
+    <ol>
+      <li>Ersetz alles in <mark>[Klammern]</mark> durch echte Details. Je genauer dein Auftrag, desto heller leuchtet Spark.</li>
+      <li>Starte für jeden Prompt einen neuen Chat.</li>
+      <li>Hak nach, zum Beispiel: „Geh bei Punkt 2 tiefer.“</li>
+    </ol>
+  </section>
+    <article class="card" id="prompt-1">
+      <header><span class="nr">1</span><div class="kopf"><h2>Stresstester</h2><p class="was">zerlegt deinen Plan</p></div></header>
+      <p class="wann"><span>Wann:</span> Bevor du einen Plan umsetzt, Geld ausgibst oder etwas abschickst.</p>
+      <pre class="prompt" id="text-1">Hier ist mein Plan: <mark>[Plan]</mark>. Sei mein kritischster Gegenspieler. Prüf meine Annahmen, meine Logik und meine blinden Flecken. Schreib nichts um und bring keine neuen Ideen. Nenn die 5 größten Schwachstellen, die schwerste zuerst, jeweils mit der Frage, die ich mir stellen sollte.</pre>
+      <button type="button" class="copy" data-target="text-1">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-2">
+      <header><span class="nr">2</span><div class="kopf"><h2>Perspektiv&shy;wechsler</h2><p class="was">dreht deine Idee</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn deine Idee feststeckt oder klingt wie alle anderen.</p>
+      <pre class="prompt" id="text-2">Das ist meine Kernidee: <mark>[Idee]</mark>. Zeig sie mir aus 3 neuen Blickwinkeln: für eine Zielgruppe, an die ich nicht gedacht habe, über einen emotionalen Auslöser und als andere Positionierung. Pro Blickwinkel: ein Satz, wie die Idee dann klingt, und was sich dadurch ändert.</pre>
+      <button type="button" class="copy" data-target="text-2">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-3">
+      <header><span class="nr">3</span><div class="kopf"><h2>Fragen-Finder</h2><p class="was">findet die echte Frage</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn du dich im Kreis drehst und nicht weißt, wo du anfangen sollst.</p>
+      <pre class="prompt" id="text-3">Darüber zerbreche ich mir gerade den Kopf: <mark>[Situation]</mark>. Hilf mir, die eigentliche Frage dahinter zu finden. Stell mir zuerst bis zu 3 Rückfragen. Formulier danach die eine Frage, die ich mir wirklich stellen sollte, und erklär in 2 Sätzen, warum.</pre>
+      <button type="button" class="copy" data-target="text-3">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-4">
+      <header><span class="nr">4</span><div class="kopf"><h2>Bauchgefühl-Übersetzer</h2><p class="was">sagt, was nicht passt</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn sich etwas komisch anfühlt und du nicht sagen kannst, warum.</p>
+      <pre class="prompt" id="text-4">Irgendwas daran fühlt sich falsch an, aber ich kann nicht sagen, was: <mark>[Situation]</mark>. Hilf mir, das Gefühl in Worte zu fassen. Nenn 3 mögliche Widersprüche oder Spannungen, jeweils mit einer Frage, an der ich prüfen kann, ob es das ist.</pre>
+      <button type="button" class="copy" data-target="text-4">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-5">
+      <header><span class="nr">5</span><div class="kopf"><h2>Folgen-Kartograf</h2><p class="was">denkt zwei Schritte weiter</p></div></header>
+      <p class="wann"><span>Wann:</span> Vor großen Entscheidungen: Job, Umzug, Kauf, Kündigung.</p>
+      <pre class="prompt" id="text-5">Ich überlege, Folgendes zu entscheiden: <mark>[Entscheidung]</mark>. Denk die Folgen mit mir durch: erst die offensichtlichen, dann was daraus in 3 Monaten und in einem Jahr folgen könnte. Markiere, welche Folgen umkehrbar sind und welche nicht.</pre>
+      <button type="button" class="copy" data-target="text-5">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-6">
+      <header><span class="nr">6</span><div class="kopf"><h2>Blinde-Fleck-Jäger</h2><p class="was">findet, was fehlt</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn ein Plan verdächtig glatt aussieht.</p>
+      <pre class="prompt" id="text-6">Das ist mein Plan: <mark>[Plan]</mark>. Welcher entscheidende Faktor fehlt in meiner Rechnung? Nenn die eine versteckte Variable, die das Ergebnis am stärksten kippen könnte, woran ich sie früh erkenne und was ich dann tun kann.</pre>
+      <button type="button" class="copy" data-target="text-6">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-7">
+      <header><span class="nr">7</span><div class="kopf"><h2>Prinzipien-Finder</h2><p class="was">macht Erfolg wiederholbar</p></div></header>
+      <p class="wann"><span>Wann:</span> Nach einem Erfolg oder einem Fail, damit du etwas mitnimmst.</p>
+      <pre class="prompt" id="text-7">Das hat funktioniert (oder ist schiefgegangen): <mark>[Situation]</mark>. Arbeite das Prinzip dahinter heraus, in einem Satz. Zeig mir dann 3 andere Bereiche, in denen ich es anwenden kann, mit je einem konkreten Beispiel.</pre>
+      <button type="button" class="copy" data-target="text-7">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-8">
+      <header><span class="nr">8</span><div class="kopf"><h2>Intuitions-Dolmetscher</h2><p class="was">begründet dein Bauchgefühl</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn du andere oder dich selbst von einer Idee überzeugen willst.</p>
+      <pre class="prompt" id="text-8">Diese Idee fühlt sich für mich richtig an, aber ich kann es noch nicht begründen: <mark>[Idee]</mark>. Formulier die stärksten Gründe, warum sie Sinn ergeben könnte. Sag mir danach ehrlich, unter welcher Bedingung mein Bauchgefühl falsch läge.</pre>
+      <button type="button" class="copy" data-target="text-8">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-9">
+      <header><span class="nr">9</span><div class="kopf"><h2>Muster-Erkenner</h2><p class="was">verbindet die Punkte</p></div></header>
+      <p class="wann"><span>Wann:</span> Wenn dir dieselbe Sache immer wieder passiert.</p>
+      <pre class="prompt" id="text-9">Diese Beispiele sind mir aufgefallen: <mark>[Beispiele]</mark>. Welches Muster verbindet sie? Nenn es in einem Satz, zeig, woran man es in jedem Beispiel erkennt, und sag mir, wo es noch auftauchen könnte.</pre>
+      <button type="button" class="copy" data-target="text-9">Prompt kopieren</button>
+    </article>
+    <article class="card" id="prompt-10">
+      <header><span class="nr">10</span><div class="kopf"><h2>Rückwärts-Planer</h2><p class="was">plant vom Ziel aus</p></div></header>
+      <p class="wann"><span>Wann:</span> Für große Ziele, bei denen der erste Schritt unklar ist.</p>
+      <pre class="prompt" id="text-10">Mein Ziel: <mark>[Ziel mit Datum]</mark>. Plan mit mir rückwärts: Beginn beim erreichten Ziel und geh Schritt für Schritt zurück bis heute. Was muss auf jeder Stufe erfüllt sein? Ende mit dem ersten Schritt, den ich diese Woche machen kann.</pre>
+      <button type="button" class="copy" data-target="text-10">Prompt kopieren</button>
+    </article>
+  <footer>
+    <div class="pix">SPARK LEUCHTET SCHON</div>
+    <div>Mehr davon: <a href="https://www.instagram.com/heyspark.ki/" target="_blank" rel="noopener">@heyspark.ki auf Instagram</a> · <a href="https://www.tiktok.com/@heyspark.ki" target="_blank" rel="noopener">TikTok</a></div>
+    <nav class="recht" aria-label="Rechtliches"><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a></nav>
+<p class="hinweis">Keine Cookies, kein Tracking. Kein offizielles Angebot von OpenAI, Anthropic oder Google.</p>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const el = document.getElementById(btn.dataset.target);
+  const done = () => { btn.textContent = 'Kopiert!'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = 'Prompt kopieren'; btn.classList.remove('ok'); }, 1800); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Markiert, jetzt kopieren'; };
+  try { navigator.clipboard.writeText(el.innerText).then(done, fallback); } catch (e) { fallback(); }
+}));
+</script>
+
+</body>
+</html>

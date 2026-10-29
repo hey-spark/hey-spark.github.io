@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hey Spark Links</title>
+<meta name="description" content="Hey Spark: KI richtig nutzen. Prompts, die funktionieren. Tools, die Zeit sparen. Automatisierungen, die für dich arbeiten.">
+<meta name="theme-color" content="#3d0b03">
+<meta property="og:title" content="Hey Spark">
+<meta property="og:description" content="KI liefert Schrott? Liegt meist an der Eingabe. Gratis-Prompts und Links.">
+<meta property="og:image" content="img/profilbild.png">
+<link rel="icon" href="img/profilbild.png">
+<style>
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/poppins-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/poppins-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/poppins-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:700;font-display:swap;src:url(fonts/poppins-latin-700-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/poppins-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:800;font-display:swap;src:url(fonts/poppins-latin-800-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:900;font-display:swap;src:url(fonts/poppins-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:900;font-display:swap;src:url(fonts/poppins-latin-900-italic.woff2) format('woff2')}
+@font-face{font-family:'Press Start 2P';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/press-start-2p-latin-400-normal.woff2) format('woff2')}
+
+/* Gratis-Bereich */
+.freebies{width:100%; display:grid; gap:10px; margin-top:6px}
+.freebies h2{margin:0; font-family:var(--font-pixel); font-size:.62rem; letter-spacing:.08em; color:var(--gold)}
+.freebie{display:grid; grid-template-columns:1fr auto; gap:4px 14px; align-items:center; text-align:left; text-decoration:none; color:var(--creme);
+  background:var(--tinte); border:3px solid var(--gold); box-shadow:5px 5px 0 var(--gold); padding:16px 18px; transition:transform .12s, box-shadow .12s}
+.freebie:hover{transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--gold)}
+.freebie:active{transform:translate(3px,3px); box-shadow:2px 2px 0 var(--gold)}
+.freebie:focus-visible{outline:3px solid var(--creme); outline-offset:4px}
+.freebie .tag{grid-column:1/-1; font-family:var(--font-pixel); font-size:.55rem; letter-spacing:.08em; color:var(--orange)}
+.freebie b{font-weight:900; font-style:italic; font-size:1.3rem; line-height:1.1}
+.freebie span.text{grid-column:1; font-size:.88rem; font-weight:500; color:rgba(255,230,194,.82); line-height:1.4}
+.freebie .los{grid-column:2; grid-row:2/4; font-family:var(--font-pixel); font-size:.8rem; color:var(--gold)}
+/* Rechtliches */
+.recht{position:relative; z-index:1; display:flex; justify-content:center; gap:18px; padding-block:18px 6px}
+.recht a{color:var(--creme); font-size:.78rem; font-weight:500}
+.hinweis{position:relative; z-index:1; margin:0 auto; padding-block:0 28px; max-width:440px; text-align:center; font-size:.7rem; color:rgba(255,230,194,.6)}
+</style>
+<style>
+/* Layout: eine schmale Säule wie ein Handy-Display, Glut steigt von unten, Melanthrial schaut von unten ins Bild. */
+:root{
+  /* Farben laut Kanal-Bibel */
+  --glut-1:#ff9a3c; --glut-2:#ec6418; --glut-3:#9a2a09; --glut-4:#3d0b03;
+  --orange:#ff9a2e; --gold:#ffd447; --creme:#ffe6c2; --tinte:#2a120c; --nacht:#0b0708;
+  --font-display:"Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-pixel:"Press Start 2P", ui-monospace, "Courier New", monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--glut-4)}
+body{
+  margin:0; min-height:100%;
+  background:
+    radial-gradient(120% 70% at 50% 0%, var(--glut-1) 0%, var(--glut-2) 30%, var(--glut-3) 62%, var(--glut-4) 100%);
+  background-color:var(--glut-4);
+  color:var(--creme); font-family:var(--font-display);
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  overflow-x:hidden; position:relative;
+}
+#glut{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0}
+.saeule{position:relative; z-index:1; max-width:440px; margin:0 auto; padding-block:40px 0; display:flex; flex-direction:column; align-items:center; gap:22px; text-align:center}
+
+/* Spark */
+.spark-btn{all:unset; cursor:pointer; position:relative; display:block; width:min(250px, 70vw); border-radius:24px}
+.spark-btn:focus-visible{outline:3px solid var(--gold); outline-offset:6px}
+.spark-btn img{display:block; width:100%; image-rendering:pixelated; filter:drop-shadow(0 14px 0 rgba(42,18,12,.35)); animation:schweben 3.6s ease-in-out infinite}
+.antenne{position:absolute; left:46.9%; top:4.5%; width:22%; aspect-ratio:1; translate:-50% -50%; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,212,71,.95) 0%, rgba(255,212,71,.35) 35%, rgba(255,212,71,0) 70%);
+  opacity:var(--licht, .55); transition:opacity .25s, scale .25s; scale:calc(.8 + var(--licht, .55) * .7); pointer-events:none; mix-blend-mode:screen; animation:schweben 3.6s ease-in-out infinite}
+@keyframes schweben{50%{transform:translateY(-8px)}}
+
+.name{margin:0; font-weight:900; font-style:italic; font-size:clamp(2.4rem, 11vw, 3.4rem); line-height:1; letter-spacing:-.02em;
+  transform:skewY(-4deg) rotate(-1deg); color:var(--creme); text-shadow:0 4px 0 var(--tinte), 0 10px 24px rgba(42,18,12,.55); text-wrap:balance}
+.handle{font-family:var(--font-pixel); font-size:.68rem; letter-spacing:.06em; color:var(--gold); background:var(--tinte); padding:9px 12px; border-radius:2px; box-shadow:0 0 0 2px var(--orange)}
+.these{margin:4px 0 0; font-weight:800; font-size:1.18rem; line-height:1.35; max-width:30ch; text-wrap:balance; text-shadow:0 2px 0 var(--tinte)}
+.these em{font-style:normal; color:var(--gold)}
+
+/* Links */
+.links{list-style:none; margin:10px 0 0; padding:0; width:100%; display:flex; flex-direction:column; gap:14px}
+.links a{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--tinte); background:var(--creme);
+  padding:16px 18px; border:3px solid var(--tinte); box-shadow:5px 5px 0 var(--tinte); transform:skewX(-4deg);
+  transition:transform .12s, box-shadow .12s, background .12s}
+.links a > *{transform:skewX(4deg)}
+.links a:hover{background:var(--gold); transform:skewX(-4deg) translate(-2px,-2px); box-shadow:7px 7px 0 var(--tinte)}
+.links a:active{transform:skewX(-4deg) translate(3px,3px); box-shadow:2px 2px 0 var(--tinte)}
+.links a:focus-visible{outline:3px solid var(--gold); outline-offset:4px}
+.links .pfeil{font-family:var(--font-pixel); font-size:.7rem; color:var(--glut-2)}
+.links .label{font-family:var(--font-pixel); font-size:.72rem; letter-spacing:.04em; line-height:1.5; text-align:left; flex:1; min-width:0}
+.links .info{font-weight:500; font-size:.8rem; color:var(--glut-3); white-space:nowrap}
+.links .neu a{background:var(--tinte); color:var(--creme); box-shadow:5px 5px 0 var(--gold); border-color:var(--gold)}
+.links .neu a:hover{background:var(--glut-4); box-shadow:7px 7px 0 var(--gold)}
+.links .neu .pfeil{color:var(--gold)} .links .neu .info{color:var(--orange)}
+
+/* Was du hier lernst */
+.themen{width:100%; margin-top:18px; display:grid; gap:10px; text-align:left}
+.themen h2{margin:0 0 4px; font-family:var(--font-pixel); font-size:.62rem; letter-spacing:.08em; color:var(--gold); text-align:center}
+.thema{display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:baseline; padding:12px 14px; background:rgba(42,18,12,.55); border-left:4px solid var(--orange)}
+.thema b{font-weight:900; font-style:italic; font-size:1.05rem}
+.thema span{grid-column:2; font-size:.9rem; font-weight:500; color:rgba(255,230,194,.82); line-height:1.45}
+.thema i{font-style:normal; font-family:var(--font-pixel); font-size:.6rem; color:var(--gold); grid-row:span 2}
+
+.fuss{margin-top:8px; font-size:.78rem; font-weight:500; color:rgba(255,230,194,.7)}
+
+/* Melanthrial kommt immer von unten ins Bild */
+.buehne{position:relative; width:100%; height:150px; margin-top:4px; overflow:hidden}
+.melanthrial{position:absolute; z-index:2; bottom:0; right:6%; width:128px; pointer-events:none; overflow:visible; animation:reinschauen 1.1s cubic-bezier(.2,1.4,.4,1) .6s both}
+.melanthrial img{display:block; width:100%; image-rendering:pixelated; margin-bottom:-58px}
+.melanthrial .schild{position:absolute; right:92%; top:6%; white-space:nowrap; font-family:var(--font-pixel); font-size:.5rem; line-height:1.6; letter-spacing:.04em; color:var(--tinte); background:var(--creme); padding:6px 8px; border:2px solid var(--tinte); box-shadow:3px 3px 0 var(--tinte); text-align:right}
+@keyframes reinschauen{from{translate:0 60%; opacity:0}to{translate:0 0; opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  .spark-btn img,.antenne{animation:none}
+  .melanthrial{animation:none}
+}
+@media (max-width:380px){ .links .info{display:none} }
+</style>
+
+</head>
+<body>
+<canvas id="glut" aria-hidden="true"></canvas>
+
+<main class="saeule">
+  <button class="spark-btn" id="spark" type="button" aria-label="Spark antippen: das Antennen-Licht wird heller">
+    <img src="img/spark-start.png" alt="Spark, ein runder orangefarbener Pixel-Roboter, freut sich">
+    <span class="antenne" aria-hidden="true"></span>
+  </button>
+
+  <h1 class="name" id="kanalname">Hey Spark</h1>
+  <div class="handle" id="handle">@heyspark.ki</div>
+  <p class="these">KI liefert Schrott?<br>Liegt meist an der <em>Eingabe</em>.</p>
+
+  <section class="freebies" aria-labelledby="gratis-titel">
+    <h2 id="gratis-titel">GRATIS FÜR DICH</h2>
+    <a class="freebie" href="denken/">
+      <span class="tag">NEU · 10 PROMPTS</span>
+      <b>Denk-Prompts</b>
+      <span class="text">Damit deine KI mitdenkt, statt zu schleimen. Für ChatGPT und Claude, zum Kopieren.</span>
+      <span class="los" aria-hidden="true">▶</span>
+    </a>
+  </section>
+
+  <ul class="links">
+    <li class="neu"><a id="link-neu" href="https://www.youtube.com/@ki.heyspark/shorts" target="_blank" rel="noopener"><span class="pfeil">▶</span><span class="label">NEU: SPARK STELLT SICH VOR</span><span class="info">Intro</span></a></li>
+    <li><a id="link-tiktok" href="https://www.tiktok.com/@heyspark.ki" target="_blank" rel="noopener"><span class="pfeil">▶</span><span class="label">TIKTOK</span><span class="info">Videos</span></a></li>
+    <li><a id="link-instagram" href="https://www.instagram.com/heyspark.ki/" target="_blank" rel="noopener"><span class="pfeil">▶</span><span class="label">INSTAGRAM</span><span class="info">Reels &amp; Karussells</span></a></li>
+    <li><a id="link-youtube" href="https://www.youtube.com/@ki.heyspark" target="_blank" rel="noopener"><span class="pfeil">▶</span><span class="label">YOUTUBE</span><span class="info">Shorts</span></a></li>
+  </ul>
+
+  <section class="themen" aria-labelledby="themen-titel">
+    <h2 id="themen-titel">DAS GIBT'S HIER</h2>
+    <div class="thema"><i>01</i><b>Prompts,</b><span>die funktionieren. Mit Vorher-nachher, damit du siehst, was den Unterschied macht.</span></div>
+    <div class="thema"><i>02</i><b>Tools,</b><span>die dir Zeit sparen. Kurz gezeigt, direkt ausprobierbar.</span></div>
+    <div class="thema"><i>03</i><b>Automatisierungen,</b><span>die für dich arbeiten, während du was anderes machst.</span></div>
+  </section>
+
+  <p class="fuss">Spark leuchtet für jede Idee. Aber nur so hell wie dein Auftrag.</p>
+  <div class="buehne">
+  <div class="melanthrial" aria-hidden="true">
+  <div class="schild">MELANTHRIAL.<br>JA, WIRKLICH.</div>
+  <img src="img/melanthrial-start.png" alt="">
+</div>
+  </div>
+</main>
+<nav class="recht" aria-label="Rechtliches"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+<p class="hinweis">Keine Cookies, kein Tracking. Kein offizielles Angebot von OpenAI, Anthropic oder Google.</p>
+
+
+
+<script>
+/* Name und Handle an einer Stelle tauschen */
+const KANAL = { name: "Hey Spark", handle: "heyspark.ki", youtube: "ki.heyspark" };
+document.getElementById("kanalname").textContent = KANAL.name;
+document.getElementById("handle").textContent = "@" + KANAL.handle;
+document.getElementById("link-tiktok").href = "https://www.tiktok.com/@" + KANAL.handle;
+document.getElementById("link-instagram").href = "https://www.instagram.com/" + KANAL.handle + "/";
+document.getElementById("link-youtube").href = "https://www.youtube.com/@" + KANAL.youtube;
+document.getElementById("link-neu").href = "https://www.youtube.com/@" + KANAL.youtube + "/shorts";
+document.title = KANAL.name + " Links";
+
+/* Antippen: Antennen-Licht wird heller, dann wieder ruhig */
+const spark = document.getElementById("spark");
+let licht = .55, timer;
+spark.addEventListener("click", () => {
+  licht = Math.min(1.6, licht + .35);
+  spark.style.setProperty("--licht", licht.toFixed(2));
+  clearTimeout(timer);
+  timer = setTimeout(function abklingen(){ licht = Math.max(.55, licht - .1); spark.style.setProperty("--licht", licht.toFixed(2)); if (licht > .55) timer = setTimeout(abklingen, 120); }, 900);
+});
+
+/* Aufsteigende Glut-Partikel (Pixel-Quadrate) */
+(() => {
+  const c = document.getElementById("glut"), ctx = c.getContext("2d");
+  const ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const farben = ["#ffd447", "#ff9a2e", "#ffe6c2"];
+  let w, h, teile = [];
+  function groesse(){ const d = Math.min(devicePixelRatio || 1, 2); w = c.clientWidth; h = c.clientHeight; c.width = w * d; c.height = h * d; ctx.setTransform(d,0,0,d,0,0); }
+  function neu(start){ return { x: Math.random() * w, y: start ? Math.random() * h : h + 10, s: [2,3,3,4][Math.floor(Math.random()*4)], v: .25 + Math.random() * .7, d: Math.random() * 6.28, f: farben[Math.floor(Math.random()*3)], a: .25 + Math.random() * .55 }; }
+  function zeichnen(){
+    ctx.clearRect(0,0,w,h);
+    for (const t of teile){
+      if (!ruhig){ t.y -= t.v; t.d += .02; t.x += Math.sin(t.d) * .3; if (t.y < -10) Object.assign(t, neu(false)); }
+      ctx.globalAlpha = t.a * Math.min(1, t.y / (h * .5) + .2); ctx.fillStyle = t.f; ctx.fillRect(Math.round(t.x), Math.round(t.y), t.s, t.s);
+    }
+    if (!ruhig) requestAnimationFrame(zeichnen);
+  }
+  groesse(); teile = Array.from({ length: Math.round(Math.min(70, w / 6)) }, () => neu(true));
+  addEventListener("resize", groesse); zeichnen();
+})();
+</script>
+
+</body>
+</html>
