@@ -37,6 +37,47 @@
 .recht{position:relative; z-index:1; display:flex; justify-content:center; gap:18px; padding-block:18px 6px}
 .recht a{color:var(--creme); font-size:.78rem; font-weight:500}
 .hinweis{position:relative; z-index:1; margin:0 auto; padding-block:0 28px; max-width:440px; text-align:center; font-size:.7rem; color:rgba(255,230,194,.6)}
+/* Sparks Bücherregal: jedes PDF ist ein Buch */
+.freebies{grid-template-columns:minmax(0,1fr)}
+.regal{width:100%; min-width:0; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:14px; text-align:left; scroll-margin-top:16px}
+.regal h2{margin:0; font-family:var(--font-pixel); font-size:.62rem; letter-spacing:.08em; color:var(--gold); text-align:center}
+.regal .intro{margin:0; text-align:center; font-size:.84rem; font-weight:500; color:rgba(255,230,194,.78)}
+.schrank{position:relative; min-width:0; border:3px solid var(--tinte); box-shadow:5px 5px 0 var(--gold);
+  background:radial-gradient(70% 60% at 50% 0%, rgba(255,154,46,.28) 0%, rgba(255,154,46,0) 70%),
+    repeating-linear-gradient(90deg, rgba(255,230,194,.045) 0 2px, rgba(0,0,0,0) 2px 58px), linear-gradient(#3a160b, #1d0a06)}
+.schrank::before{content:""; position:absolute; left:50%; top:0; width:34px; height:6px; translate:-50% 0; background:var(--gold); box-shadow:0 0 18px 6px rgba(255,212,71,.35)}
+.reihe{overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:var(--orange) transparent; padding:26px 12px 0}
+.reihe-innen{display:flex; align-items:flex-end; gap:22px; width:max-content; margin:0 auto; padding:0 14px}
+.brett{height:20px; background:linear-gradient(var(--orange) 0 4px, var(--glut-2) 4px 7px, var(--glut-3) 7px 14px, var(--tinte) 14px); border-top:3px solid var(--tinte)}
+.buch{all:unset; box-sizing:border-box; position:relative; flex:none; width:128px; cursor:pointer; scroll-snap-align:center;
+  transform:rotate(-2deg); transform-origin:50% 100%; transition:transform .18s cubic-bezier(.2,1.3,.4,1), filter .18s}
+.buch:nth-child(even){transform:rotate(1.5deg)}
+.buch img{display:block; width:100%; aspect-ratio:4/5; object-fit:cover; image-rendering:auto; border:3px solid var(--tinte); border-left-width:0}
+.buch::before{content:""; position:absolute; left:-13px; top:0; bottom:0; width:13px; border:3px solid var(--tinte); border-right:0;
+  background:linear-gradient(var(--gold) 0 10px, var(--tinte) 10px 13px, var(--glut-3) 13px calc(100% - 13px), var(--tinte) calc(100% - 13px) calc(100% - 10px), var(--gold) calc(100% - 10px))}
+.buch::after{content:""; position:absolute; right:-7px; top:5px; bottom:5px; width:7px; border:2px solid var(--tinte); border-left:0;
+  background:repeating-linear-gradient(var(--creme) 0 2px, #d9b88f 2px 4px)}
+.buch:hover{transform:translateY(-6px) rotate(0)}
+.buch[aria-pressed="true"]{transform:translateY(-12px) rotate(0); filter:drop-shadow(0 10px 14px rgba(255,180,60,.45))}
+.buch:focus-visible{outline:3px solid var(--creme); outline-offset:6px}
+.buch .neu{position:absolute; z-index:2; top:-10px; right:-14px; rotate:8deg; font-family:var(--font-pixel); font-size:.5rem; letter-spacing:.04em;
+  color:var(--tinte); background:var(--gold); border:2px solid var(--tinte); padding:5px 6px 4px; box-shadow:2px 2px 0 var(--tinte)}
+.stuetze{flex:none; width:104px; margin:0 0 -3px -6px; image-rendering:pixelated; pointer-events:none; user-select:none}
+.buch-info{display:grid; gap:6px; color:var(--creme); background:var(--tinte); border:3px solid var(--gold); box-shadow:5px 5px 0 var(--gold); padding:16px 18px 18px}
+.buch-info .tag{font-family:var(--font-pixel); font-size:.55rem; letter-spacing:.08em; color:var(--orange); line-height:1.6}
+.buch-info b{font-weight:900; font-style:italic; font-size:1.3rem; line-height:1.1}
+.buch-info p{margin:0; font-size:.88rem; font-weight:500; line-height:1.45; color:rgba(255,230,194,.85)}
+.buch-info .meta{font-size:.74rem; color:rgba(255,230,194,.6)}
+.knoepfe{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px}
+.knopf{display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-family:var(--font-pixel); font-size:.66rem; letter-spacing:.04em;
+  padding:12px 14px 11px; border:3px solid var(--creme); transform:skewX(-4deg); transition:transform .12s, box-shadow .12s}
+.knopf > *{transform:skewX(4deg)}
+.knopf.voll{background:var(--creme); color:var(--tinte); box-shadow:4px 4px 0 var(--gold)}
+.knopf.leer{color:var(--creme); box-shadow:4px 4px 0 var(--glut-3)}
+.knopf:hover{transform:skewX(-4deg) translate(-2px,-2px)}
+.knopf:active{transform:skewX(-4deg) translate(2px,2px); box-shadow:1px 1px 0 var(--gold)}
+.knopf:focus-visible{outline:3px solid var(--gold); outline-offset:3px}
+@media (prefers-reduced-motion:reduce){ .buch,.knopf{transition:none} }
 </style>
 <style>
 /* Layout: eine schmale Säule wie ein Handy-Display, Glut steigt von unten, Melanthrial schaut von unten ins Bild. */
@@ -140,6 +181,29 @@ body{
       <span class="text">Damit deine KI mitdenkt, statt zu schleimen. Für ChatGPT und Claude, zum Kopieren.</span>
       <span class="los" aria-hidden="true">▶</span>
     </a>
+    <section class="regal" id="buecherregal" aria-labelledby="regal-titel">
+      <h2 id="regal-titel">SPARKS BÜCHERREGAL</h2>
+      <p class="intro">Gratis-Guides zum Lesen und Speichern. Tipp ein Buch an.</p>
+      <div class="schrank">
+        <div class="reihe"><div class="reihe-innen">
+        <button class="buch" type="button" id="regal-ki-breakdown" data-buch="ki-breakdown" aria-pressed="false" aria-controls="buch-info">
+          <span class="neu" aria-hidden="true">NEU</span><img src="bibliothek/ki-breakdown.jpg" alt="Der KI-Breakdown" width="128" height="160" loading="lazy">
+        </button>
+          <img class="stuetze" src="img/ki-zeigt.png" alt="" aria-hidden="true">
+        </div></div>
+        <div class="brett" aria-hidden="true"></div>
+      </div>
+      <div class="buch-info" id="buch-info" aria-live="polite">
+        <span class="tag" data-feld="tag">NEU · GRATIS-GUIDE · 16 SEITEN</span>
+        <b data-feld="titel">Der KI-Breakdown</b>
+        <p data-feld="text">Claude, ChatGPT und Gemini verständlich erklärt: was sie können, was sie kosten und wie du mehr aus jeder KI rausholst.</p>
+        <span class="meta" data-feld="meta">PDF · 2,1 MB · Stand 02.11.2026</span>
+        <div class="knoepfe">
+          <a class="knopf voll" data-feld="lesen" href="bibliothek/ki-breakdown.pdf" target="_blank" rel="noopener"><span>LESEN ▶</span></a>
+          <a class="knopf leer" data-feld="speichern" href="bibliothek/ki-breakdown.pdf" download="Hey-Spark-KI-Breakdown.pdf"><span>SPEICHERN ▼</span></a>
+        </div>
+      </div>
+    </section>
   </section>
 
   <ul class="links">
@@ -211,5 +275,31 @@ spark.addEventListener("click", () => {
 })();
 </script>
 
+<script>
+/* Bücherregal: Buch antippen = Infos und Knöpfe darunter zeigen. Direktlink: …/#buch-<id> */
+(() => {
+  const BUECHER = [{"id": "ki-breakdown", "titel": "Der KI-Breakdown", "tag": "NEU · GRATIS-GUIDE · 16 SEITEN", "text": "Claude, ChatGPT und Gemini verständlich erklärt: was sie können, was sie kosten und wie du mehr aus jeder KI rausholst.", "meta": "PDF · 2,1 MB · Stand 02.11.2026", "pdf": "bibliothek/ki-breakdown.pdf", "datei": "Hey-Spark-KI-Breakdown.pdf"}];
+  const info = document.getElementById("buch-info");
+  const feld = n => info.querySelector('[data-feld="' + n + '"]');
+  const knoepfe = [...document.querySelectorAll(".buch")];
+  function zeige(id, scrollen) {
+    const b = BUECHER.find(x => x.id === id) || BUECHER[0];
+    knoepfe.forEach(k => k.setAttribute("aria-pressed", String(k.dataset.buch === b.id)));
+    feld("tag").textContent = b.tag; feld("titel").textContent = b.titel;
+    feld("text").textContent = b.text; feld("meta").textContent = b.meta;
+    feld("lesen").href = b.pdf; feld("speichern").href = b.pdf; feld("speichern").download = b.datei;
+    const reihe = document.querySelector(".reihe"), k = knoepfe.find(x => x.dataset.buch === b.id);
+    if (k) { const kr = k.getBoundingClientRect(), rr = reihe.getBoundingClientRect();
+      reihe.scrollBy({left: kr.left - rr.left - (rr.width - kr.width) / 2, behavior: scrollen ? "auto" : "smooth"}); }
+    if (scrollen) document.getElementById("buecherregal").scrollIntoView({behavior: "smooth", block: "start"});
+  }
+  knoepfe.forEach(k => k.addEventListener("click", () => {
+    zeige(k.dataset.buch, false);
+    try { history.replaceState(null, "", "#buch-" + k.dataset.buch); } catch (e) {}
+  }));
+  const ziel = location.hash.startsWith("#buch-") ? location.hash.slice(6) : null;
+  zeige(ziel || BUECHER[0].id, !!ziel || location.hash === "#buecherregal");
+})();
+</script>
 </body>
 </html>
