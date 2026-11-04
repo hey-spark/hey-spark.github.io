@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Steckbrief-Prompt · Hey Spark</title>
+<meta name="description" content="Steckbrief-Prompt von Hey Spark: Deine KI interviewt dich einmal und schreibt deinen persönlichen Steckbrief. Zum Kopieren.">
+<meta property="og:title" content="Steckbrief-Prompt · Hey Spark">
+<link rel="icon" href="../img/profilbild.png">
+<style>
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/poppins-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:500;font-display:swap;src:url(../fonts/poppins-latin-500-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:700;font-display:swap;src:url(../fonts/poppins-latin-700-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(../fonts/poppins-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:800;font-display:swap;src:url(../fonts/poppins-latin-800-italic.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:900;font-display:swap;src:url(../fonts/poppins-latin-900-normal.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:900;font-display:swap;src:url(../fonts/poppins-latin-900-italic.woff2) format('woff2')}
+@font-face{font-family:'Press Start 2P';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/press-start-2p-latin-400-normal.woff2) format('woff2')}
+.zurueck { align-self: flex-start; font-family: var(--f-pixel); font-size: 10px; letter-spacing: .06em; color: var(--creme); text-decoration: none; padding: 6px 0; }
+.zurueck:hover { color: var(--gold); }
+.recht { display: flex; justify-content: center; gap: 18px; }
+.recht a { color: var(--creme); font-size: 13px; }
+.hinweis { margin: 0; font-size: 12px; color: var(--leise); }
+body { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+<style>
+/* Layout: eine schmale Spalte wie ein Handy-Screen, oben Glut-Hero, darunter 10 Prompt-Karten mit Kopierknopf. Design laut Kanal-Bibel, bewusst nur dunkel. */
+:root {
+  --glut-1:#ff9a3c; --glut-2:#ec6418; --glut-3:#9a2a09; --glut-4:#3d0b03;
+  --grund:#140907; --karte:#211009; --linie:#4a2416;
+  --orange:#ff9a2e; --gold:#ffd447; --creme:#ffe6c2; --tinte:#2a120c; --text:#f6e7d5; --leise:#c9a98f;
+  --f-display:'Poppins', system-ui, sans-serif; --f-text:'Poppins', system-ui, sans-serif; --f-pixel:'Press Start 2P', ui-monospace, monospace;
+  color-scheme: dark;
+}
+html { background: var(--grund); }
+body { background: var(--grund); color: var(--text); font-family: var(--f-text); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 640px; margin: 0 auto; padding-block: 24px 56px; display: flex; flex-direction: column; gap: 20px; }
+.hero { position: relative; overflow: hidden; border-radius: 24px; padding: 28px 22px 0;
+  background: radial-gradient(120% 80% at 50% 30%, var(--glut-1) 0%, var(--glut-2) 38%, var(--glut-3) 72%, var(--glut-4) 100%); }
+.hero .pix { font-family: var(--f-pixel); font-size: 11px; letter-spacing: .08em; color: var(--creme); }
+.hero h1 { font-family: var(--f-display); font-weight: 900; font-style: italic; font-size: clamp(40px, 11vw, 64px); line-height: .98; letter-spacing: -.03em;
+  margin: 14px 0 10px; color: #fff; transform: rotate(-4deg); transform-origin: left; text-shadow: 0 .07em 0 rgba(42,18,12,.85); text-wrap: balance; }
+.hero h1 em { color: var(--gold); font-style: inherit; }
+.hero p { margin: 18px 0 0; max-width: 32ch; color: var(--creme); font-weight: 700; font-size: 17px; line-height: 1.4; text-shadow: 0 2px 0 rgba(42,18,12,.6); }
+.figuren { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px; }
+.figuren img { image-rendering: pixelated; height: 150px; width: auto; }
+.figuren img.spark { height: 120px; margin-bottom: 18px; filter: drop-shadow(0 0 24px rgba(255,212,71,.55)); }
+.tipp { border: 2px dashed var(--linie); border-radius: 18px; padding: 18px 20px; }
+.tipp h3, .wann span { font-family: var(--f-pixel); font-size: 10px; letter-spacing: .1em; color: var(--orange); text-transform: uppercase; }
+.tipp h3 { margin: 0 0 10px; }
+.tipp ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.tipp mark, .prompt mark { background: none; color: var(--gold); font-weight: 800; }
+.card { background: var(--karte); border: 2px solid var(--linie); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card:first-of-type { border-color: var(--gold); }
+.card header { display: flex; gap: 14px; align-items: center; }
+.nr { font-family: var(--f-pixel); font-size: 22px; color: var(--gold); min-width: 2.2em; text-align: center; }
+.kopf { min-width: 0; }
+.card h2 { margin: 0; font-family: var(--f-display); font-weight: 900; font-size: clamp(18px, 5.2vw, 22px); line-height: 1.1; color: #fff; overflow-wrap: break-word; hyphens: manual; }
+.was { margin: 2px 0 0; color: var(--leise); font-weight: 600; font-size: 14px; }
+.wann { margin: 0; font-size: 15px; color: var(--text); }
+.wann span { margin-right: 6px; }
+.prompt { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--f-text); font-weight: 500; font-size: 15.5px; line-height: 1.55;
+  background: var(--grund); border-radius: 14px; padding: 16px; color: var(--creme); }
+.copy { align-self: flex-start; font-family: var(--f-pixel); font-size: 11px; letter-spacing: .06em; color: var(--tinte); background: var(--orange);
+  border: 0; border-radius: 12px; padding: 14px 16px; cursor: pointer; box-shadow: 0 4px 0 var(--glut-3); }
+.copy:hover { background: var(--gold); }
+.copy:focus-visible { outline: 3px solid var(--creme); outline-offset: 3px; }
+.copy.ok { background: var(--gold); }
+footer { text-align: center; display: grid; gap: 8px; color: var(--leise); font-size: 14px; }
+footer .pix { font-family: var(--f-pixel); font-size: 11px; color: var(--gold); letter-spacing: .08em; }
+footer a { color: var(--creme); }
+@media (prefers-reduced-motion: no-preference) { .copy { transition: background .15s, transform .1s; } .copy:active { transform: translateY(2px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="zurueck" href="../">◀ Hey Spark · alle Links</a>
+  <section class="hero">
+    <div class="pix">HEY SPARK · STECKBRIEF-PROMPT</div>
+    <h1>Claude kennt dich <em>nicht.</em></h1>
+    <p>Noch nicht. Mit diesem Prompt interviewt dich deine KI einmal und schreibt dir deinen persönlichen Steckbrief.</p>
+    <div class="figuren"><img src="../img/melanthrial-daumen-hoch.png" alt="Melanthrial mit Daumen hoch"><img class="spark" src="../img/ki-freut-sich.png" alt="Spark, der freundliche Pixel-Roboter"></div>
+  </section>
+  <section class="tipp">
+    <h3>So geht's</h3>
+    <ol>
+      <li>Prompt kopieren und in einen <mark>neuen Chat</mark> einfügen.</li>
+      <li>Die 10 Fragen beantworten, immer nur eine auf einmal.</li>
+      <li>Den fertigen Steckbrief in Claude unter <mark>Einstellungen → Anweisungen</mark> speichern. Andere KIs haben dafür meist auch ein Feld in den Einstellungen.</li>
+    </ol>
+  </section>
+    <article class="card" id="prompt-1">
+      <header><span class="nr">1</span><div class="kopf"><h2>Steckbrief-Prompt</h2><p class="was">10 Fragen, dann kennt dich deine KI</p></div></header>
+      <pre class="prompt" id="text-1">Du bist mein persönlicher KI-Einrichter. Ziel: ein Steckbrief, den ich in Claude unter Einstellungen → Anweisungen speichere, damit jede Antwort zu mir passt.
+
+So gehst du vor:
+1. Stell mir 10 kurze Fragen, immer nur EINE auf einmal: wer ich bin, was ich mache, wofür ich KI nutze, mein Wissensstand, wie ich angesprochen werden will, Länge und Ton der Antworten, Format (Liste oder Fließtext), was mich an KI-Antworten nervt, meine aktuellen Ziele.
+2. Gib zu jeder Frage 3 Beispiel-Antworten, damit ich schnell antworten kann. Hak nach, wenn ich zu vage bin.
+3. Frag nichts Sensibles (keine Adresse, keine Passwörter, keine Gesundheitsdaten).
+4. Schreib danach den Steckbrief: Ich-Form, klare Stichpunkte, max. 1.500 Zeichen, keine Floskeln.
+5. Zeig mir zum Schluss an einer Beispielfrage, wie du vorher und nachher antworten würdest.
+
+Starte mit Frage 1.</pre>
+      <button type="button" class="copy" data-target="text-1">Prompt kopieren</button>
+    </article>
+  <footer>
+    <div class="pix">SPARK LEUCHTET SCHON</div>
+    <div>Noch mehr gratis: <a href="../denken/">10 Denk-Prompts</a> · <a href="https://www.instagram.com/heyspark.ki/" target="_blank" rel="noopener">@heyspark.ki auf Instagram</a> · <a href="https://www.tiktok.com/@heyspark.ki" target="_blank" rel="noopener">TikTok</a></div>
+    <nav class="recht" aria-label="Rechtliches"><a href="../impressum.html">Impressum</a><a href="../datenschutz.html">Datenschutz</a></nav>
+<p class="hinweis">Keine Cookies, kein Tracking. Kein offizielles Angebot von OpenAI, Anthropic oder Google.</p>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const el = document.getElementById(btn.dataset.target);
+  const done = () => { btn.textContent = 'Kopiert!'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = 'Prompt kopieren'; btn.classList.remove('ok'); }, 1800); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Markiert, jetzt kopieren'; };
+  try { navigator.clipboard.writeText(el.innerText).then(done, fallback); } catch (e) { fallback(); }
+}));
+</script>
+</body>
+</html>
