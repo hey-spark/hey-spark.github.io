@@ -186,24 +186,24 @@ body{
       <p class="intro">Gratis-Guides zum Lesen und Speichern. Tipp ein Buch an.</p>
       <div class="schrank">
         <div class="reihe"><div class="reihe-innen">
-        <button class="buch" type="button" id="regal-ki-in-deutschland-2026" data-buch="ki-in-deutschland-2026" aria-pressed="false" aria-controls="buch-info">
-          <span class="neu" aria-hidden="true">NEU</span><img src="bibliothek/ki-in-deutschland-2026.jpg" alt="KI in Deutschland 2026" width="128" height="160" loading="lazy">
-        </button>
         <button class="buch" type="button" id="regal-ki-breakdown" data-buch="ki-breakdown" aria-pressed="false" aria-controls="buch-info">
           <span class="neu" aria-hidden="true">NEU</span><img src="bibliothek/ki-breakdown.jpg" alt="Der KI-Breakdown" width="128" height="160" loading="lazy">
+        </button>
+        <button class="buch" type="button" id="regal-ki-in-deutschland-2026" data-buch="ki-in-deutschland-2026" aria-pressed="false" aria-controls="buch-info">
+          <span class="neu" aria-hidden="true">NEU</span><img src="bibliothek/ki-in-deutschland-2026.jpg" alt="KI in Deutschland 2026" width="128" height="160" loading="lazy">
         </button>
           <img class="stuetze" src="img/ki-zeigt.png" alt="" aria-hidden="true">
         </div></div>
         <div class="brett" aria-hidden="true"></div>
       </div>
       <div class="buch-info" id="buch-info" aria-live="polite">
-        <span class="tag" data-feld="tag">NEU · REPORT · 16 SEITEN</span>
-        <b data-feld="titel">KI in Deutschland 2026</b>
-        <p data-feld="text">Wie viele Menschen und Firmen KI wirklich nutzen, mit welchen Tools, was bremst und was der EU AI Act ändert. Alle Zahlen mit Quelle.</p>
-        <span class="meta" data-feld="meta">PDF · 1,5 MB · Stand 04.11.2026</span>
+        <span class="tag" data-feld="tag">NEU · GRATIS-GUIDE · 16 SEITEN</span>
+        <b data-feld="titel">Der KI-Breakdown</b>
+        <p data-feld="text">Claude, ChatGPT und Gemini verständlich erklärt: was sie können, was sie kosten und wie du mehr aus jeder KI rausholst.</p>
+        <span class="meta" data-feld="meta">PDF · 2,1 MB · Stand 02.11.2026</span>
         <div class="knoepfe">
-          <a class="knopf voll" data-feld="lesen" href="bibliothek/ki-in-deutschland-2026.pdf" target="_blank" rel="noopener"><span>LESEN ▶</span></a>
-          <a class="knopf leer" data-feld="speichern" href="bibliothek/ki-in-deutschland-2026.pdf" download="Hey-Spark-KI-in-Deutschland-2026.pdf"><span>SPEICHERN ▼</span></a>
+          <a class="knopf voll" data-feld="lesen" href="bibliothek/ki-breakdown.pdf" target="_blank" rel="noopener"><span>LESEN ▶</span></a>
+          <a class="knopf leer" data-feld="speichern" href="bibliothek/ki-breakdown.pdf" download="Hey-Spark-KI-Breakdown.pdf"><span>SPEICHERN ▼</span></a>
         </div>
       </div>
     </section>
@@ -281,7 +281,7 @@ spark.addEventListener("click", () => {
 <script>
 /* Bücherregal: Buch antippen = Infos und Knöpfe darunter zeigen. Direktlink: …/#buch-<id> */
 (() => {
-  const BUECHER = [{"id": "ki-in-deutschland-2026", "titel": "KI in Deutschland 2026", "tag": "NEU · REPORT · 16 SEITEN", "text": "Wie viele Menschen und Firmen KI wirklich nutzen, mit welchen Tools, was bremst und was der EU AI Act ändert. Alle Zahlen mit Quelle.", "meta": "PDF · 1,5 MB · Stand 04.11.2026", "pdf": "bibliothek/ki-in-deutschland-2026.pdf", "datei": "Hey-Spark-KI-in-Deutschland-2026.pdf"}, {"id": "ki-breakdown", "titel": "Der KI-Breakdown", "tag": "NEU · GRATIS-GUIDE · 16 SEITEN", "text": "Claude, ChatGPT und Gemini verständlich erklärt: was sie können, was sie kosten und wie du mehr aus jeder KI rausholst.", "meta": "PDF · 2,1 MB · Stand 02.11.2026", "pdf": "bibliothek/ki-breakdown.pdf", "datei": "Hey-Spark-KI-Breakdown.pdf"}];
+  const BUECHER = [{"id": "ki-breakdown", "titel": "Der KI-Breakdown", "tag": "NEU · GRATIS-GUIDE · 16 SEITEN", "text": "Claude, ChatGPT und Gemini verständlich erklärt: was sie können, was sie kosten und wie du mehr aus jeder KI rausholst.", "meta": "PDF · 2,1 MB · Stand 02.11.2026", "pdf": "bibliothek/ki-breakdown.pdf", "datei": "Hey-Spark-KI-Breakdown.pdf"}, {"id": "ki-in-deutschland-2026", "titel": "KI in Deutschland 2026", "tag": "NEU · REPORT · 16 SEITEN", "text": "Wie viele Menschen und Firmen KI wirklich nutzen, mit welchen Tools, was bremst und was der EU AI Act ändert. Alle Zahlen mit Quelle.", "meta": "PDF · 1,5 MB · Stand 04.11.2026", "pdf": "bibliothek/ki-in-deutschland-2026.pdf", "datei": "Hey-Spark-KI-in-Deutschland-2026.pdf"}];
   const info = document.getElementById("buch-info");
   const feld = n => info.querySelector('[data-feld="' + n + '"]');
   const knoepfe = [...document.querySelectorAll(".buch")];
